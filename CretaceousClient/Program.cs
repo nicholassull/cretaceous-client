@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using CretaceousClient.Models;
 
 namespace CretaceousClient
 {
@@ -17,10 +18,6 @@ namespace CretaceousClient
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            var apiCallTask = ApiHelper.ApiCall("[YOUR-API-KEY-HERE]");
-            var result = apiCallTask.Result;
-            JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-            Console.WriteLine(jsonResponse["results"]);
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

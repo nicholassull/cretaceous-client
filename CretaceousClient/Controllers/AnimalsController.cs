@@ -3,7 +3,7 @@ using CretaceousClient.Models;
 
 namespace CretaceousClient.Controllers
 {
-  public class AnimalController : Controller
+  public class AnimalsController : Controller
   {
     public IActionResult Index()
     {

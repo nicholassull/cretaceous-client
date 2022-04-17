@@ -30,5 +30,25 @@ namespace CretaceousClient.Models
       request.AddJsonBody(newAnimal);
       var response = await client.ExecuteTaskAsync(request);
     }
+
+    public static async Task Put(int id, string newAnimal)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"animals/{id}", Method.PUT);
+
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newAnimal);
+
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+    public static async Task Delete(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"animals/{id}", Method.DELETE);
+      //Delete methods don't require a body. Only the id of the Animal to be deleted.
+      request.AddHeader("Content-Type", "application/json");
+      var response = await client.ExecuteTaskAsync(request);
+    }
   }
 }

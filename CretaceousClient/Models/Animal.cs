@@ -34,5 +34,12 @@ namespace CretaceousClient.Models
 
       return animal;
     }
+
+    public static void Post(Animal animal)
+    {
+      //For this, we only need to convert the animal to JSON (also a string) and call the helper method.
+      string jsonAnimal = JsonConvert.SerializeObject(animal);
+      var apiCallTask = ApiHelper.Post(jsonAnimal);
+    }
   }
 }
